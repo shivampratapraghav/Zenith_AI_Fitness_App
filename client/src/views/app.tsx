@@ -75,9 +75,30 @@ export default function App(){
   const textMuted = darkOn? 'text-zinc-500' : 'text-zinc-500'
   const bottomNav = darkOn? 'bg-[#080d1f]/95 border-white/10' : 'bg-white/95 border-black/10 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]'
 
-  if(page==='signin'){
-    return <div className={`min-h-screen flex items-center justify-center p-6 ${bgMain}`}><div className={`w-full max-w-[380px] rounded-[28px] p-8 border ${bgCard}`}><div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center text-xl mb-6">⚡</div><h1 className="text-[28px] font-black">Welcome back</h1><input value={email} onChange={e=>setEmail(e.target.value)} placeholder="email" className={`w-full rounded-2xl px-4 py-3.5 text-sm mt-6 outline-none border ${darkOn?'bg-[#0c1228] border-white/10':'bg-zinc-100 border-black/5'}`}/><input type="password" value={pass} onChange={e=>setPass(e.target.value)} placeholder="password" className={`w-full rounded-2xl px-4 py-3.5 text-sm mt-3 outline-none border ${darkOn?'bg-[#0c1228] border-white/10':'bg-zinc-100 border-black/5'}`}/><button onClick={login} className="w-full bg-emerald-500 text-black font-bold py-4 rounded-2xl mt-6">Login →</button></div></div>
-  }
+ if(page==='signin'){
+  return <div className={`min-h-screen flex items-center justify-center p-6 ${bgMain} relative overflow-hidden`}>
+    <div className="absolute top-[-150px] left-[-150px] w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[120px]"></div>
+    <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-green-400/20 rounded-full blur-[120px]"></div>
+    <div className={`w-full max-w-[380px] rounded-[28px] p-8 ${bgCard} backdrop-blur-2xl relative shadow-2xl`}>
+
+      <div className="flex justify-center mb-4">
+        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center text-2xl shadow-lg shadow-green-500/20">⚡</div>
+      </div>
+
+      <h1 className="text-center font-black tracking-[0.18em] text-[18px]">ZENITH <span className="text-emerald-400">AI</span> FITNESS APP</h1>
+      <p className="text-center text-[10px] tracking-[0.25em] opacity-50 mt-2 uppercase">Transform Your Body With Intelligence</p>
+
+      <div className="mt-8">
+        <p className="font-bold text-lg mb-6">Welcome back</p>
+        <input value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@example.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-sm outline-none focus:border-emerald-400 mb-3" />
+        <input value={pass} onChange={e=>setPass(e.target.value)} type="password" placeholder="••••••••" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-sm outline-none focus:border-emerald-400 mb-6" />
+        <button onClick={login} className="w-full bg-gradient-to-r from-lime-200 to-emerald-400 text-black font-bold py-3.5 rounded-xl hover:scale-[1.02] transition-all shadow-lg">Login →</button>
+        <p className="text-center text-[10px] opacity-30 mt-6 tracking-widest uppercase">AI-Powered • Secure & Private</p>
+      </div>
+
+    </div>
+  </div>
+}
   if(page==='onboarding'){
     return <div className={`min-h-screen p-8 ${bgMain}`}><div className="max-w-2xl mx-auto"><div className="flex gap-2 mb-10">{[1,2,3].map(i=><div key={i} className={`h-2 flex-1 rounded-full ${step>=i?'bg-emerald-500': darkOn?'bg-white/10':'bg-black/10'}`}></div>)}</div><div className={`rounded-[28px] p-8 border ${bgCard}`}>
       {step===1&&<><p className="font-bold text-lg mb-6">How old are you?</p><input type="number" value={age} onChange={e=>setAge(Number(e.target.value))} className={`w-full rounded-2xl px-5 py-4 font-bold outline-none border ${darkOn?'bg-[#0c1228] border-white/10':'bg-zinc-100 border-black/5'}`}/></>}
